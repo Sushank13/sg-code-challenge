@@ -8,9 +8,10 @@ table_name=os.environ["DYNAMODB_TABLE_NAME"]
 
 def updateuserdetails(event,context):
     print("Entered inside function.")
+    body=json.loads(event["body"])
     print("Extracting user email and new full name from the Lambda event")
-    user_email=event["user_email"]
-    new_user_full_name=event["user_full_name"]
+    user_email=body["user_email"]
+    new_user_full_name=body["user_full_name"]
     try:
         if(user_email is None): # input validation 
             print("Wrong input by user")
