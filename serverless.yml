@@ -42,7 +42,21 @@ functions: #define all the Lambdas to be created under functions
           path: /deleteuserdetails
           method: delete
           cors: true
-
+  
+  #getuserdetails:
+    #handler: lambdas/getuserdetails.getuserdetails
+    #events:  #defining the event that would trigger this lambda. In this case, a http GET request
+      #- http:
+          #path: /getuserdetails/{email}
+          #method: get
+          #cors: true
+  updateuserdetails:
+    handler: lambdas/updateuserdetails.updateuserdetails
+    events:  #defining the event that would trigger this lambda. In this case, a http PUT request
+      - http:
+          path: /updateuserdetails
+          method: put
+          cors: true
 
 resources: #using Cloudformation template to define DynamoDb resource
   Resources:

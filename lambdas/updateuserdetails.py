@@ -4,7 +4,7 @@ import os
 
 print("Initializing DynamoDB client")
 dynamodb=boto3.client("dynamodb")
-table_name=os.environ["DYNAMODB_TABLE_NAME"]
+table_name=os.environ["DYNAMODB_TABLE"]
 
 def updateuserdetails(event,context):
     print("Entered inside function.")
@@ -38,7 +38,7 @@ def updateuserdetails(event,context):
             print("User details updated successfully!")
             return{
                 "statusCode": 200,
-                "body": updated_value
+                "body": json.dumps(updated_value)
             }
     except Exception as e:
         print("Exception in retrieved user details")
