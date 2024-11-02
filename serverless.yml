@@ -8,7 +8,7 @@ service: sg-code-challenge
 provider:
   name: aws
   runtime: python3.12
-  stage: ${opt:stage, "dev"}
+  stage: ${opt:stage, "dev"} #default stage is development
   region: us-east-1
   environment: #environment variables that will be accessible to the Lambda functions
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-user-details # defines the name of the dynamodb table based on the deployment stage. Ex: sg-code-challenge-dev-user-details for dev environment
@@ -33,6 +33,14 @@ functions: #define all the Lambdas to be created under functions
       - http:
           path: /adduserdetails
           method: post
+          cors: true
+  
+  deleteuserdetails:
+    handler: lambdas/deleteuserdetails.deleteuserdetails
+    events:  #defining the event that would trigger this lambda. In this case, a http DELETE request
+      - http:
+          path: /deleteuserdetails
+          method: delete
           cors: true
 
 
