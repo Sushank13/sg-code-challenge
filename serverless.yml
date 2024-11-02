@@ -8,7 +8,7 @@ service: sg-code-challenge
 provider:
   name: aws
   runtime: python3.12
-  stage: dev
+  stage: ${opt:stage, "dev"}
   region: us-east-1
   environment: #environment variables that will be accessible to the Lambda functions
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-user-details # defines the name of the dynamodb table based on the deployment stage. Ex: sg-code-challenge-dev-user-details for dev environment
