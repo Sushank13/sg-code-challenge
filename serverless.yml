@@ -8,11 +8,48 @@ service: sg-code-challenge
 provider:
   name: aws
   runtime: python3.12
+  stage: dev
+  region: us-east-1
+  environment: #environment variables that will be accessible to the Lambda functions
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-user-details # defines the name of the dynamodb table based on the deployment stage. Ex: sg-code-challenge-dev-user-details for dev environment
+  iam: # IAM role creation so that Lambdas have permission to access the DynamoDb table
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:Query
+            - dynamodb:Scan
+          Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
-functions:
-  hello:
-    handler: handler.hello
-    events:
-      - httpApi:
-          path: /
-          method: get
+
+functions: #define all the Lambdas to be created under functions
+  adduserdetails:
+    handler: lambdas/adduserdetails.adduserdetails
+    events: #defining the event that would trigger this lambda. In this case, a http POST request
+      - http:
+          path: /adduserdetails
+          method: post
+          cors: true
+
+
+resources: #using Cloudformation template to define DynamoDb resource
+  Resources:
+    SgCodeChallengeDynamoDBTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: user_email
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: user_email
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
