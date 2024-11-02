@@ -43,13 +43,14 @@ functions: #define all the Lambdas to be created under functions
           method: delete
           cors: true
   
-  #getuserdetails:
-    #handler: lambdas/getuserdetails.getuserdetails
-    #events:  #defining the event that would trigger this lambda. In this case, a http GET request
-      #- http:
-          #path: /getuserdetails/{email}
-          #method: get
-          #cors: true
+  getallusers:
+    handler: lambdas/getallusers.getallusers
+    events:  #defining the event that would trigger this lambda. In this case, a http GET request
+      - http:
+          path: /getallusers
+          method: get
+          cors: true
+          
   updateuserdetails:
     handler: lambdas/updateuserdetails.updateuserdetails
     events:  #defining the event that would trigger this lambda. In this case, a http PUT request
