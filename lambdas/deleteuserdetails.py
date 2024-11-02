@@ -4,12 +4,13 @@ import os
 
 print("Initializing DynamoDB client")
 dynamodb=boto3.client("dynamodb")
-table_name=os.environ["DYNAMODB_TABLE_NAME"]
+table_name=os.environ["DYNAMODB_TABLE"]
 
 def deleteuserdetails(event,context):
     print("Entered inside function.")
+    body=json.loads(event["body"])
     print("Extracting user email from the Lambda event")
-    user_email=event["user_email"]
+    user_email=body["user_email"]
     try:
         if(user_email is None): # input validation 
             print("Wrong input by user")
