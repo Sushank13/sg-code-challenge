@@ -50,7 +50,7 @@ functions: #define all the Lambdas to be created under functions
           path: /getallusers
           method: get
           cors: true
-          
+
   updateuserdetails:
     handler: lambdas/updateuserdetails.updateuserdetails
     events:  #defining the event that would trigger this lambda. In this case, a http PUT request
