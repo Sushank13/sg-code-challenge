@@ -23,7 +23,7 @@ jobs:
       #- run: npm i  # Install all Node.js dependencies
 
       - name: serverless deploy
-        uses: serverless/github-action@v4  # This action includes the Serverless Framework in the Ubuntu container image
+        uses: serverless/github-action@v3.2  # This action includes the Serverless Framework in the Ubuntu container image
         with:
           args: deploy  # Executes the command "serverless deploy" in the Ubuntu container
         env:
