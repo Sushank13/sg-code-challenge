@@ -20,9 +20,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: | # install the serverless framework cli and node.js depedencies from package.json
-        npm install -g serverless 
-        npm install
+      #- run: | # install the serverless framework cli and node.js depedencies from package.json
+        #npm install -g serverless 
+        #npm install
 
       - name: serverless deploy 
         uses: serverless/github-action@v3.2  
