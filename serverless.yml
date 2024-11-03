@@ -31,7 +31,7 @@ functions: #define all the Lambdas to be created under functions
     handler: lambdas/adduserdetails.adduserdetails
     events: #defining the event that would trigger this lambda. In this case, a http POST request
       - http:
-          path: adduserdetails
+          path: /adduserdetails
           method: post
           cors: true
   
@@ -39,7 +39,7 @@ functions: #define all the Lambdas to be created under functions
     handler: lambdas/deleteuserdetails.deleteuserdetails
     events:  #defining the event that would trigger this lambda. In this case, a http DELETE request
       - http:
-          path: deleteuserdetails
+          path: /deleteuserdetails
           method: delete
           cors: true
   
@@ -47,7 +47,7 @@ functions: #define all the Lambdas to be created under functions
     handler: lambdas/getallusers.getallusers
     events:  #defining the event that would trigger this lambda. In this case, a http GET request
       - http:
-          path: getallusers
+          path: /getallusers
           method: get
           cors: true
 
@@ -55,7 +55,7 @@ functions: #define all the Lambdas to be created under functions
     handler: lambdas/updateuserdetails.updateuserdetails
     events:  #defining the event that would trigger this lambda. In this case, a http PUT request
       - http:
-          path: updateuserdetails
+          path: /updateuserdetails
           method: put
           cors: true
 
