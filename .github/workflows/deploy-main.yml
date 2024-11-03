@@ -9,18 +9,18 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:  # Build matrix is a set of different configurations (versions) of the virtual environment.
-        node-version: [18.x]
+    #strategy:
+      #matrix:  # Build matrix is a set of different configurations (versions) of the virtual environment.
+        #node-version: [18.x]
     steps:
       - uses: actions/checkout@v3  # This action pulls the code from our GitHub Repo to the Ubuntu container image.
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+      #- name: Use Node.js ${{ matrix.node-version }}
+        #uses: actions/setup-node@v3
+        #with:
+          #node-version: ${{ matrix.node-version }}
 
-      - run: npm i  # Install all Node.js dependencies
+      #- run: npm i  # Install all Node.js dependencies
 
       - name: serverless deploy
         uses: serverless/github-action@v4  # This action includes the Serverless Framework in the Ubuntu container image
