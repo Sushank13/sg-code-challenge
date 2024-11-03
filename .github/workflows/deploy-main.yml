@@ -1,0 +1,29 @@
+name: Deploy main branch
+
+on:
+  push:
+    branches:
+      - main #trigger workflow when code is pushed to main branch 
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: #build matrix is a set of different configurations(versions) of the virtual environment.
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v3 #this action pullls the codes from our Github Repo to the ubuntu container image.
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci #install all node.js dependencies
+    - name: serverless deploy
+      uses: serverless/github-action@v4 #this action would include the serverless framework in the ubuntu container image
+      with:
+        args: deploy  # will execute the command "serverless deploy" in the ubunto container
+      env:
+        SERVERLESS_ACCESS_KEY:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
