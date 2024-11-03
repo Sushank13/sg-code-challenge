@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm ci  # Install all Node.js dependencies
+      - run: npm i  # Install all Node.js dependencies
 
       - name: serverless deploy
         uses: serverless/github-action@v4  # This action includes the Serverless Framework in the Ubuntu container image
