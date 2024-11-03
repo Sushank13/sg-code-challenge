@@ -7,7 +7,7 @@ service: sg-code-challenge
 
 provider:
   name: aws
-  runtime: python3.12
+  runtime: python3.11
   stage: ${opt:stage, "dev"} #default stage is development
   region: us-east-1
   environment: #environment variables that will be accessible to the Lambda functions
