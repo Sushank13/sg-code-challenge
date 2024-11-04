@@ -1,5 +1,5 @@
 # Overview
-This project implements a Serverless Cloud solution for creating REST APIs that support basic CRUD(Create, Read, Update and Delete) operations by utilizing AWS services: AWS Lambda for backend logic, AWS API Gateway for managing API calls and AWS DynamoDB as persistence storage. The AWS resources have been provisioned by using Infrastructure as a Code (IaC) called Serverless Framework. Lastly, a multi-stage deployment has been automated by making use of Github Actions for building a CI/CD pipeline.
+This project implements a Serverless Cloud solution for creating REST APIs that support basic CRUD(Create, Read, Update and Delete) operations by utilizing AWS services such as AWS Lambda for backend logic, AWS API Gateway for managing API calls and AWS DynamoDB as persistence storage. The AWS resources have been provisioned by using Infrastructure as a Code (IaC) called Serverless Framework. Lastly, a multi-stage deployment has been automated by making use of Github Actions for building a CI/CD pipeline.
 
 # Architecture
 Below is a simple and high level architecture of the serverless cloud solution being built.
@@ -76,6 +76,34 @@ The DynamoDB table has been configured with `user_email` as the primary key. Thi
 ![delete-dynamodb](/api-testing-screenshots/delete-dynamodb.png?raw=true)
 
 # References
+The following sources have been used for building this project:-
+* **For Creating the Architecture Diagram**: https://app.diagrams.net/?splash=0&libs=aws4 
+* **For Github Actions CI/CD**:
+    * *Knowledge Base*: 
+        1. https://www.youtube.com/watch?v=vNCNLhc7-6U&t=523s
+        2. https://stackoverflow.com/questions/63148639/create-dependencies-between-jobs-in-github-actions
+        3. https://www.serverless.com/framework/docs/guides/dashboard/cicd/running-in-your-own-cicd
+        4. https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
+        5. https://www.youtube.com/watch?v=KorJPUKvHKc&t=295s
+    * *YAML file*: https://github.com/serverless/github-action
+* **For Testing APIs**: <a href="">Postman API Platform</a>
+* **For Lambda Code**: 
+    1. https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/programming-with-python.html
+    2. https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb/client/put_item.html
+    3. https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb/table/delete_item.html
+    4. https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb/client/update_item.html
+    5. https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb/client/scan.html
+* **For Serverless Framework**:
+    * *Knowledge Base*:
+        1. https://www.youtube.com/watch?v=KQRGM9_eqIw
+        2. https://www.youtube.com/playlist?list=PLmexTtcbIn_gP8bpsUsHfv-58KsKPsGEo
+        3. https://www.serverless.com/framework/docs#philosophy
+        4. https://www.youtube.com/playlist?list=PLL2hlSFBmWwzA7ut0KKYM6F8LKfu84-5c
+    * *YAML File*: 
+        1. https://medium.com/@ahmedSalem2020/building-a-serverless-rest-api-with-aws-lambda-api-gateway-dynamodb-and-serverless-framework-f3fb34395349
+        2. https://github.com/serverless/examples/tree/v4/aws-python-rest-api-with-dynamodb
+
+
 
 
 
