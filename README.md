@@ -14,7 +14,7 @@ This repository has the following folder structure:
 * `architecture` directory has the screenshot of the simple and high level architecture of the serverless cloud solution.
 * `cicd-screenshots` directory has the screenshots of CI/CD pipeline execution.
 * `deployed-aws-resources` directory has the screenshots of the main deployed resources.
-* `lambdas` directory contains 4 `.py` files which have the backend code for each of the CRUD operations. The code in these files will be deployed to AWS Lambda functions by Serverless Framework.
+* `lambdas` directory contains 4 files which have the backend code for each of the CRUD operations. The code in these files will be deployed to AWS Lambda functions by Serverless Framework.
 *  `serverless.yml` is the file in which the IaC is written for:
     1. 4 lambdas and their corresponding REST APIs
     2. DynamoDB table
@@ -26,17 +26,16 @@ This repository has the following folder structure:
 4. Go to your `GitHub repo-> Settings->Secrets and variables->Actions` and create three repository secrets: 
     1. SERVERLESS_ACCESS_KEY
     2. AWS_SECRET_ACCESS_KEY
-    3. SERVERLESS_ACCESS_KEY and provide the corresponsing values you had saved in Step 2 and 3.
-5. In the `serverless.yml` file, change the value of `org:`with the organization name you had kept while creating the Serverless Framework account in Step2. 
+    3. SERVERLESS_ACCESS_KEY and provide the corresponsing values you had saved in Step 2 and 3
+5.  Go to your `GitHub repo-> Settings->Secrets and variables->Actions` and create repository variable: DEPLOYMENT_STAGE and provide either `dev` or `prod` values dependig on deplpyment stage you wish to have.
+6. In the `serverless.yml` file, change the value of `org:`with the organization name you had kept while creating the Serverless Framework account in Step2. 
 
 # Deployment
-After the steup is completed, commit the changes and push them to the main branch. This will trigger the CI/CD pipeline:
+After the steup is completed, commit any changes and push them to the main branch. This will trigger the CI/CD pipeline:
 
-1. **Multi-Stage deployment visualization**
-![multi-stage-deployment](/cicd-screenshots/1.multi-stage-deployment.png?raw=true)
-2. **Deployment for Dev environment**
+1. **Deployment for Dev environment**
 ![deploy-on-dev](/cicd-screenshots/2.deploy-on-dev.png?raw=true)
-3. **Deployment for Prod environment**
+2. **Deployment for Prod environment**
 ![deploy-on-prod](/cicd-screenshots/3.deploy-on-prod.png?raw=true)
 
 The APIs provided in the output can be tested to perform the CRUD operations.
@@ -85,6 +84,8 @@ The following sources have been used for building this project:-
         3. https://www.serverless.com/framework/docs/guides/dashboard/cicd/running-in-your-own-cicd
         4. https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
         5. https://www.youtube.com/watch?v=KorJPUKvHKc&t=295s
+        6. https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables
+        7. https://www.youtube.com/watch?v=dPLPSaFqJmY
     * *YAML file*: https://github.com/serverless/github-action
 * **For Testing APIs**: <a href="">Postman API Platform</a>
 * **For Lambda Code**: 
