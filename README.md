@@ -4,12 +4,14 @@ This project implements a Serverless Cloud solution for creating REST APIs that 
 # Structure
 This repository has the following folder structure:
 * `.github/workflows` directory contains the `deploy-main.yml` file that executes the multi-stage CI/CD pipeline when a new commit is pushed to the `main` branch.
+* `api-testing-screenshots` directory has the screenshots of API testing using Postman.
+* `cicd-screenshots` directory has the screenshots of CI/CD pipeline execution.
+* `deployed-aws-resources` directory has the screenshots of the main deployed resources.
 * `lambdas` directory contains 4 `.py` files which have the backend code for each of the CRUD operations. The code in these files will be deployed to AWS Lambda functions by Serverless Framework.
 *  `serverless.yml` is the file in which the IaC is written for:
     1. 4 lambdas and their corresponding REST APIs
     2. DynamoDB table
     3. IAM role required by the Lambdas to access the DynamoDB table.
-* `cicd-screenshots` directory has the screenshots of CI/CD pipeline execution.
 # Setup
 1. Clone this repo on your local machine and then push this repo to a GitHub account owned by you.
 2. You would need to have a Serverless Framework account. Once account is created, you would need to <a href= "https://www.serverless.com/framework/docs/guides/dashboard/cicd/running-in-your-own-cicd#create-an-access-key-in-the-serverless-framework-dashboard">create an Access Key in the Serverless Framework Dashboard</a> (**SERVERLESS_ACCESS_KEY**) and save it with you in a secure location.
@@ -32,7 +34,23 @@ After the steup is completed, commit the changes and push them to the main branc
 
 The APIs provided in the output can be tested to perform the CRUD operations.
 
-# Testing APIs
+# Deployed Resources
+After deployment, the main AWS resources would be as shown below:
+1. **AWS Lambdas**
+![lambdas](/deployed-aws-resources/lambdas-1.png?raw=true)
+
+![lambdas](/deployed-aws-resources/lambdas-2.png?raw=true)
+2. **AWS API Gateway**
+
+**For Dev**
+![dev-api](/deployed-aws-resources/dev-api.png?raw=true)
+
+**For Prod**
+![prod-api](/deployed-aws-resources/prod-api.png?raw=true)
+
+3. **AWS DynamoDB**
+![dynamodb-table](/deployed-aws-resources/dynamodb-table.png?raw=true)
+# API Testing
 The DynamoDB table has been configured with `user_email` as the primary key. This primary key attribute needs to be used while interacting with the DynamoDB table.
 1. **POST (/adduserdetails)**
 ![post](/api-testing-screenshots/post.png?raw=true)
@@ -50,6 +68,7 @@ The DynamoDB table has been configured with `user_email` as the primary key. Thi
 
 ![delete-dynamodb](/api-testing-screenshots/delete-dynamodb.png?raw=true)
 
+# References
 
 
 
