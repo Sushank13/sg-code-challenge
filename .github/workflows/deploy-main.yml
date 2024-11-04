@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: deploy 
+    name: deploy on ${{vars.DEPLOYMENT_STAGE}}
     runs-on: ubuntu-latest
     strategy:
       matrix:  # Build matrix is a set of different configurations (versions) of the virtual environment.
