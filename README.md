@@ -1,5 +1,6 @@
 # Overview
 This project implements a Serverless Cloud solution for creating REST APIs that support basic CRUD(Create, Read, Update and Delete) operations by utilizing AWS services such as AWS Lambda for backend logic, AWS API Gateway for managing API calls and AWS DynamoDB as persistence storage. The AWS resources have been provisioned by using Infrastructure as a Code (IaC) called Serverless Framework. Lastly, a multi-stage deployment has been automated by making use of Github Actions for building a CI/CD pipeline.
+# demo
 
 # Architecture
 Below is a simple and high level architecture of the serverless cloud solution being built.
