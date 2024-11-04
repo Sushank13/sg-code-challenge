@@ -1,10 +1,17 @@
 # Overview
 This project implements a Serverless Cloud solution for creating REST APIs that support basic CRUD(Create, Read, Update and Delete) operations by utilizing AWS services: AWS Lambda for backend logic, AWS API Gateway for managing API calls and AWS DynamoDB as persistence storage. The AWS resources have been provisioned by using Infrastructure as a Code (IaC) called Serverless Framework. Lastly, a multi-stage deployment has been automated by making use of Github Actions for building a CI/CD pipeline.
 
+# Architecture
+Below is a simple and high level architecture of the serverless cloud solution being built.
+
+![architecture](/architecture/architecture.jpg?raw=true)
+
+The client sends any of the POST, PUT, GET or DELETE request. The request is routed by the API Gateway to the respective Lambda. The Lambda then interacts with the DynamoDB table to perform the operation. Finally, the response is sent back from the Lambda to the client via the API Gateway
 # Structure
 This repository has the following folder structure:
 * `.github/workflows` directory contains the `deploy-main.yml` file that executes the multi-stage CI/CD pipeline when a new commit is pushed to the `main` branch.
 * `api-testing-screenshots` directory has the screenshots of API testing using Postman.
+* `architecture` directory has the screenshot of the simple and high level architecture of the serverless cloud solution.
 * `cicd-screenshots` directory has the screenshots of CI/CD pipeline execution.
 * `deployed-aws-resources` directory has the screenshots of the main deployed resources.
 * `lambdas` directory contains 4 `.py` files which have the backend code for each of the CRUD operations. The code in these files will be deployed to AWS Lambda functions by Serverless Framework.
