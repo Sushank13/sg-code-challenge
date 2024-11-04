@@ -23,13 +23,34 @@ This repository has the following folder structure:
 # Deployment
 After the steup is completed, commit the changes and push them to the main branch. This will trigger the CI/CD pipeline:
 
-1. Multi-Stage deployment visualization
+1. **Multi-Stage deployment visualization**
 ![multi-stage-deployment](/cicd-screenshots/1.multi-stage-deployment.png?raw=true)
-2. Deployment for Dev environment
+2. **Deployment for Dev environment**
 ![deploy-on-dev](/cicd-screenshots/2.deploy-on-dev.png?raw=true)
-3. Deployment for Prod environment
+3. **Deployment for Prod environment**
 ![deploy-on-prod](/cicd-screenshots/3.deploy-on-prod.png?raw=true)
 
 The APIs provided in the output can be tested to perform the CRUD operations.
+
+# Testing APIs
+The DynamoDB table has been configured with `user_email` as the primary key. This primary key attribute needs to be used while interacting with the DynamoDB table.
+1. **POST (/adduserdetails)**
+![post](/api-testing-screenshots/post.png?raw=true)
+
+![post-dynamodb](/api-testing-screenshots/post-dynamodb.png?raw=true)
+
+2. **PUT (/updateuserdetails)**
+![put](/api-testing-screenshots/put.png?raw=true)
+
+![post-dynamodb](/api-testing-screenshots/put-dynamodb.png?raw=true)
+3. **GET (/getallusers)**
+![get](/api-testing-screenshots/get.png?raw=true)
+4. **DELETE (/deleteuserdetails)**
+![delete](/api-testing-screenshots/delete.png?raw=true)
+
+![delete-dynamodb](/api-testing-screenshots/delete-dynamodb.png?raw=true)
+
+
+
 
 
