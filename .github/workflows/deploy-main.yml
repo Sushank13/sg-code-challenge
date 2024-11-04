@@ -6,8 +6,8 @@ on:
       - main  # Trigger workflow when code is pushed to the main branch
 
 jobs:
-  deploy-dev:
-    name: deploy on dev
+  deploy:
+    name: deploy 
     runs-on: ubuntu-latest
     strategy:
       matrix:  # Build matrix is a set of different configurations (versions) of the virtual environment.
@@ -23,32 +23,33 @@ jobs:
       - name: serverless deploy 
         uses: serverless/github-action@v4
         with:
-          args: deploy  # Executes the command "serverless deploy" in the Ubuntu container
+          args: deploy --stage ${{env.DEPLOYMENT_STAGE}}  # Executes the command "serverless deploy" in the Ubuntu container
         env:
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          DEPLOYMENT_STAGE: ${{env.DEPLOYMENT_STAGE}}
 
-  deploy-prod:
-    name: deploy on prod
-    needs: deploy-dev #creating dependency that prod deployment will only be done after dev deployment
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:  # Build matrix is a set of different configurations (versions) of the virtual environment.
-        node-version: [18]
-    steps:
-      - uses: actions/checkout@v3  # This action pulls the code from our GitHub Repo to the Ubuntu container image.
+  #deploy-prod:
+    #name: deploy on prod
+    #needs: deploy-dev #creating dependency that prod deployment will only be done after dev deployment
+    #runs-on: ubuntu-latest
+    #strategy:
+      #matrix:  # Build matrix is a set of different configurations (versions) of the virtual environment.
+        #node-version: [18]
+    #steps:
+      #- uses: actions/checkout@v3  # This action pulls the code from our GitHub Repo to the Ubuntu container image.
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3 #installs node.js and npm on the the Ubuntu container image.
-        with:
-          node-version: ${{ matrix.node-version }}
+      #- name: Use Node.js ${{ matrix.node-version }}
+        #uses: actions/setup-node@v3 #installs node.js and npm on the the Ubuntu container image.
+        #with:
+          #node-version: ${{ matrix.node-version }}
 
-      - name: serverless deploy 
-        uses: serverless/github-action@v4
-        with:
-          args: deploy --stage prod  # Executes the command "serverless deploy --stage prod" in the Ubuntu container
-        env:
-          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #- name: serverless deploy 
+        #uses: serverless/github-action@v4
+        #with:
+          #args: deploy --stage prod  # Executes the command "serverless deploy --stage prod" in the Ubuntu container
+        #env:
+          #SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+          #AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          #AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
