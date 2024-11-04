@@ -20,7 +20,7 @@ This repository has the following folder structure:
     2. DynamoDB table
     3. IAM role required by the Lambdas to access the DynamoDB table.
 # Setup
-1. Clone this repo on your local machine and then push this repo to a GitHub account owned by you.
+1. Clone this repo on your local machine and then push this repo to a GitHub account owned by you or fork this repo.
 2. You would need to have a Serverless Framework account. Once account is created, you would need to <a href= "https://www.serverless.com/framework/docs/guides/dashboard/cicd/running-in-your-own-cicd#create-an-access-key-in-the-serverless-framework-dashboard">create an Access Key in the Serverless Framework Dashboard</a> (**SERVERLESS_ACCESS_KEY**) and save it with you in a secure location.
 3. You would also need to have an AWS account. Once account is created, you would need to create an IAM user with administrator access and <a href="https://docs.aws.amazon.com/cli/v1/userguide/cli-authentication-user.html">retrieve **AWS_ACCESS_KEY_ID** and **AWS_SECRET_ACCESS_KEY**</a> for that user and secure it in a safe location. 
 4. Go to your `GitHub repo-> Settings->Secrets and variables->Actions` and create three repository secrets: 
